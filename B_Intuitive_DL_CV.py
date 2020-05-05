@@ -13,7 +13,7 @@ https://github.com/josephlee94/intuitive-deep-learning
 comments are based on Joseph Lee's
 
 Output is attached as a separate text file:  'Output_for_B.txt'
-and plots include following image files:
+along with images and plots.
 
 """
 
