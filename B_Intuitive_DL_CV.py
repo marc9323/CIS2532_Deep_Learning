@@ -22,7 +22,8 @@ import matplotlib.pyplot as plt
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
-
+from skimage.transform import resize
+import numpy as np
 #  download the dataset which includes,
 #  images to be recognized
 #  labels - 10 possible labels airplane automobile bird cat dog deer frog horse ship and truck
@@ -126,14 +127,14 @@ plt.show()
 
 
 #  visualize model accuracy
-plt.plot(hist.history['acc'])
-plt.plot(hist.history['val_acc'])
-plt.title('Model accuracy')
-plt.ylabel('Accuracy')
-plt.xlabel('Epoch')
-plt.legend(['Train', 'Val'], loc='lower right')
-plt.savefig('model_accuracyB.png')
-plt.show()
+# plt.plot(hist.history['acc'])
+# plt.plot(hist.history['val_acc'])
+# plt.title('Model accuracy')
+# plt.ylabel('Accuracy')
+# plt.xlabel('Epoch')
+# plt.legend(['Train', 'Val'], loc='lower right')
+# plt.savefig('model_accuracyB.png')
+# plt.show()
 
 
 #####  TEST OUT WITH YOUR OWN IMAGES ####
@@ -141,3 +142,15 @@ model.evaluate(x_test, y_test_one_hot)[1]
 
 #   save the trained model - will be saved in a file format called HDF5 (.h5)
 model.save('my_cifar10_model.h5')
+
+#  we have a model and it is trained so let's test out with own images
+my_image = plt.imread("cat.jpg")
+
+# resize the image so it fits into our model
+my_image_resized = resize(my_image, (32, 32, 3))
+img = plt.imshow(my_image_resized)
+
+#  given an image of a cat see what trained model will output
+probabilities = model.predict(np.array( [my_image_resized, ] ))
+print("\nProbabilities for the cat: ")
+print(probabilities)
