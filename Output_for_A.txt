@@ -15,6 +15,10 @@ graphics card does meet the minimum requirements, an interesting future
 project would involve installing the proper software to run training on
 the GPU.  As it stands, I am fortunate to have a pretty fast machine, so training
 took about 1-2 minutes on the CPU.
+
+This is a 2.6GB download, however, and with the end of the semester approaching in just
+days, I unfortunately lack the time to research it further at the moment.
+The toolkit is available for NVidia GPU's here:  https://developer.nvidia.com/cuda-toolkit
 """
 
 
